@@ -42,4 +42,39 @@ void main() {
     expect(numTranslate.decimalization(10100), 20);
     expect(numTranslate.decimalization(0), 0);
   });
+
+  test("search numbers", () {
+    final numSearch = SearchNumbersInLine();
+
+    expect(numSearch.findNumbers("1 2 line 5"), [1, 2, 5]);
+    expect(numSearch.findNumbers("3 10 111 exit 210"), [3, 10, 111, 210]);
+  });
+
+  test("count words in line", () {
+    final line = Line();
+
+    expect(line.countWords("world world world"), {"world": 3});
+    expect(line.countWords("line boom boom line"), {"line": 2, "boom": 2});
+  });
+
+  test("translate str to int", () {
+    final line = Line();
+
+    expect(line.convertToInt("one, two, zero, zero"), [1, 2, 0]);
+    expect(line.convertToInt("one, two, three, cat, dog"), [1, 2, 3]);
+  });
+
+  test("distance between point", () {
+    final point = Point(5, 10, 12);
+
+    expect(point.distanceTo(20, 10, 45), 36.25);
+    expect(point.distanceTo(60, 5, 13), 55.24);
+  });
+
+  test("find square triangle", () {
+    final point = Point(5, 10, 12);
+
+    expect(point.triangleArea(1, 2, 3, 2, 3, 1, 3, 2, 1), 1.73);
+    expect(point.triangleArea(7, 10, 15, 4, 7, 14, 20, 10, 15), 20.55);
+  });
 }
